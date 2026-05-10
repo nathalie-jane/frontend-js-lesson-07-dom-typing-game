@@ -42,6 +42,29 @@ let score = 0;
 let time = 10;
 
 /* --------------------------------
+  FUNCTION: Display start screen
+----------------------------------- */
+// Displays the start screen with game title and start button
+function displayStartScreen() {
+	endgameEl.classList.add("visible");
+	endgameEl.innerHTML = `<h2>TYPING GAME</h2>
+  <button onclick="startGame()">Start Game</button>`;
+}
+
+/* --------------------------------
+  FUNCTION: Start game
+----------------------------------- */
+// Starts the game by hiding the start screen
+function startGame() {
+	endgameEl.classList.remove("visible");
+	endgameEl.innerHTML = "";
+	text.focus();
+
+	addWordToDOM();
+	updateTime();
+}
+
+/* --------------------------------
   FUNCTION: Add word to DOM
 ----------------------------------- */
 // Selects a random word from the words array and adds it to the DOM
@@ -110,7 +133,5 @@ text.addEventListener("input", function () {
 	}
 });
 
-// Starts game
-addWordToDOM();
-updateTime();
+displayStartScreen();
 

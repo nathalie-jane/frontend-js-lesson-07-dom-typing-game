@@ -69,12 +69,27 @@ function updateScore() {
 function updateTime() {
 	const intervalId = setInterval(() => {
 		time -= 1;
-		timeEl.textContent = time;
+		timeEl.textContent = `${time}s`;
 
-		if (time === 0) {
+		if (time <= 0) {
 			clearInterval(intervalId);
+			gameOver();
 		}
 	}, 1000);
+}
+
+/* --------------------------------
+  FUNCTION: Game over
+----------------------------------- */
+// Disables text input field
+// Displays end game container with final score
+// Adds a button to reload the page and start a new game
+function gameOver() {
+	text.disabled = true;
+	endgameEl.classList.add("visible");
+	endgameEl.innerHTML = `<h3>GAME OVER</h3>
+  <p>Score: ${score}</p>
+  <button onclick="location.reload()">Play Again</button>`;
 }
 
 /* --------------------------------
@@ -91,7 +106,7 @@ text.addEventListener("input", function () {
 		text.value = "";
 
 		time += 5;
-		timeEl.textContent = time;
+		timeEl.textContent = `${time}s`;
 	}
 });
 

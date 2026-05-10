@@ -42,23 +42,25 @@ let score = 0;
 let time = 10;
 
 /* --------------------------------
-  FUNCTION: Display start screen
+  FUNCTION: Display start interface
 ----------------------------------- */
-// Displays the start screen with game title and start button
-function displayStartScreen() {
+// Displays the start interface with game title and start button
+function displayStartInterface() {
+	text.disabled = true;
 	endgameEl.classList.add("visible");
 	endgameEl.innerHTML = `<h2>TYPING GAME</h2>
-  <button onclick="startGame()">Start Game</button>`;
+  <button onclick="startGame()" class="game-button">Start Game</button>`;
 }
 
 /* --------------------------------
   FUNCTION: Start game
 ----------------------------------- */
-// Starts the game by hiding the start screen
+// Starts the game by hiding the start interface
 function startGame() {
 	endgameEl.classList.remove("visible");
 	endgameEl.innerHTML = "";
 	text.focus();
+	text.disabled = false;
 
 	addWordToDOM();
 	updateTime();
@@ -112,7 +114,7 @@ function gameOver() {
 	endgameEl.classList.add("visible");
 	endgameEl.innerHTML = `<h3>GAME OVER</h3>
   <p>Score: ${score}</p>
-  <button onclick="location.reload()">Play Again</button>`;
+  <button onclick="location.reload()" class="game-button">Play Again</button>`;
 }
 
 /* --------------------------------
@@ -133,5 +135,5 @@ text.addEventListener("input", function () {
 	}
 });
 
-displayStartScreen();
+displayStartInterface();
 

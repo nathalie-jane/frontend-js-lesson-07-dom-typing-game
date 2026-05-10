@@ -129,6 +129,7 @@ input {
 	z-index: 1;
 }
 
+/* Display end game interface when game is over */
 .end-game-container.visible {
 	display: flex;
 	gap: 12px;
@@ -136,7 +137,26 @@ input {
 	font-size: 1.5rem;
 }
 
+/* Title styling for end game interface */
 h3 {
 	margin: 0;
+}
+
+/* Styling for game buttons (Start and Play Again) */
+.game-button {
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: 1px solid #ccad00;
+	background-color: #ffe75c;
+}
+
+/* Hover effect for game buttons */
+.game-button:hover {
+	background-color: #ffde17;
+}
+
+/* Feedback effect for game buttons on click */
+.game-button:active {
+	transform: scale(0.95);
 }
 

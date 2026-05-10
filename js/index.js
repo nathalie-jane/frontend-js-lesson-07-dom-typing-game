@@ -65,10 +65,16 @@ function updateScore() {
 /* --------------------------------
   FUNCTION: Update time
 ----------------------------------- */
-// Increments the time by 5 seconds and updates the time element in the DOM
+// Starts a timer that decrements the time by 1 every second and updates the time element in the DOM
 function updateTime() {
-	time += 5;
-	timeEl.textContent = time;
+	const intervalId = setInterval(() => {
+		time -= 1;
+		timeEl.textContent = time;
+
+		if (time === 0) {
+			clearInterval(intervalId);
+		}
+	}, 1000);
 }
 
 /* --------------------------------
@@ -81,11 +87,15 @@ text.addEventListener("input", function () {
 	if (userInput === randomWord) {
 		updateScore();
 		addWordToDOM();
-		updateTime();
+
 		text.value = "";
+
+		time += 5;
+		timeEl.textContent = time;
 	}
 });
 
-// Starts gam
+// Starts game
 addWordToDOM();
+updateTime();
 
